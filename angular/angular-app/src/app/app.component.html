@@ -1,1 +1,16 @@
-<h2>Hola mundo angular</h2>
+<h2> {{title}} </h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users; index as i">
+            <td> {{i + 1}} </td>
+            <td> {{user}} </td>
+        </tr>
+    </tbody>
+</table>
