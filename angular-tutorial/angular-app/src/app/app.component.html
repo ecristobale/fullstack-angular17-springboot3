@@ -1,9 +1,10 @@
 <button (click)="setVisible()">
-    {{visible? 'Ocultar' : 'Mostrar'}}
+    {{visible? 'Hide' : 'Show'}}
 </button>
 
 @if (visible) {
     <h2> {{title}} </h2>
+    <div>Total: {{counter}} </div>
     
     @if (users != undefined && users.length > 0) {
         <table>
@@ -23,12 +24,13 @@
             </tbody>
         </table>
     } @else {
-        <p>No existen registros en el sistema</p>
+        <p>There is no registers in the system</p>
     }
 } @else {
-    <h2>Lo sentimos, no está disponible la vista</h2>
+    <h2>We are sorry, there is no data available to be shown</h2>
 }
 
+<app-counter [title]="subTitle" (counterEmmit)="setCounter($event)"></app-counter>
 
 <!-- <div *ngIf="visible else notEnable">
     <h2> {{title}} </h2>
@@ -50,10 +52,10 @@
     </table>
     <ng-template #isEmpty>
         <div>
-            No existen registros en el sistema
+            There is no registers in the system
         </div>
     </ng-template>
 </div>
 <ng-template #notEnable>
-    <h2>Lo sentimos, no está disponible la vista</h2>
+    <h2>>We are sorry, there is no data available to be shown</h2>
 </ng-template> -->

@@ -4,6 +4,7 @@
 The **goal** of this project is to provide a starter kit for a **fullstack** web application using latest versions. It provides:
  * a frontend via Angular 17
  * a backend via Spring Boot 3
+ * a tutorial Angular 17 webapp with the basics elements: angular-tutorial
 
 ## ANGULAR
 
