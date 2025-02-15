@@ -1,4 +1,4 @@
-# FULLSTACK ANGULAR + SPRING BOOT
+# FULLSTACK WEBAPP: ANGULAR 17 & SPRING BOOT 3
 
 ## DESCRIPTION
 The **goal** of this project is to provide a starter kit for a **fullstack** web application using latest versions. It provides:
