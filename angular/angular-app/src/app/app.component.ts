@@ -13,4 +13,12 @@ export class AppComponent {
   title: string = 'Hola Angular 17 desde app component';
 
   users: string[] = ['Edu','John','Doe', 'Eduardo'];
+  //users!: string[];
+
+  visible: boolean = false;
+
+  setVisible(): void {
+    this.visible = this.visible? false : true;
+    console.log('Click en setVisible, nuevo valor de visible: ' + this.visible);
+  }
 }

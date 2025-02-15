@@ -1,16 +1,32 @@
-<h2> {{title}} </h2>
+<div *ngIf="visible else notEnable">
+    <h2> {{title}} </h2>
+</div>
 
-<table>
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let user of users; index as i">
-            <td> {{i + 1}} </td>
-            <td> {{user}} </td>
-        </tr>
-    </tbody>
-</table>
+<button (click)="setVisible()">
+    {{visible? 'Ocultar' : 'Mostrar'}}
+</button>
+
+<div *ngIf="visible">
+    <table *ngIf="users != undefined && users.length > 0 else isEmpty">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users; index as i">
+                <td> {{i + 1}} </td>
+                <td> {{user}} </td>
+            </tr>
+        </tbody>
+    </table>
+    <ng-template #isEmpty>
+        <div>
+            No existen registros en el sistema
+        </div>
+    </ng-template>
+</div>
+<ng-template #notEnable>
+    <h2>Lo sentimos, no está disponible la vista</h2>
+</ng-template>
