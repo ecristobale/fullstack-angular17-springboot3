@@ -29,13 +29,13 @@ export const invoiceData: Invoice = {
             id: 2,
             product: 'Msoft Keyboard',
             price: 10,
-            quantity: 2
+            quantity: 3
         },
         {
             id: 3,
             product: 'Nokia Monitor',
             price: 150,
-            quantity: 3
+            quantity: 2
         }
     ]
 }
