@@ -7,6 +7,7 @@ import { CompanyViewComponent } from '../company-view/company-view.component';
 import { ListItemsComponent } from '../list-items/list-items.component';
 import { TotalComponent } from '../total/total.component';
 import { FormItemComponent } from '../form-item/form-item.component';
+import { Item } from '../../models/item';
 
 @Component({
   selector: 'app-invoice',
@@ -31,5 +32,9 @@ export class InvoiceComponent implements OnInit {
 
   removeItem(id: number) {
     this.invoice = this.service.removeItem(id);
+  }
+
+  addItem(item: Item) {
+    this.invoice = this.service.addItem(item);
   }
 }
