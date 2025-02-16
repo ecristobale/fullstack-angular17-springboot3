@@ -1,20 +1,65 @@
-<form class="w-50" (ngSubmit)="onSubmit()">
+<form class="w-50" (ngSubmit)="onSubmit(itemForm)" #itemForm="ngForm">
     <input name="product" 
             placeholder="product" 
-            class="form-control m-3" 
-            [(ngModel)]="item.product">
+            class="form-control m-3"  mx-3
+            [(ngModel)]="item.product"
+            required minlength="5"
+            #product="ngModel">
 
-    <input name="price" 
+    @if (product.invalid && (product.dirty || product.touched)) {
+        @if (product.errors!['required']) {
+            <div class="text-danger mx-3">
+                The name of the product is required
+            </div>
+        }
+        @if (product.errors!['minlength']) {
+            <div class="text-danger mx-3">
+                The length of the product has to be 5 at least
+            </div>
+        }
+    }
+
+    <input type="number" name="price" 
             placeholder="price" 
             class="form-control m-3" 
-            [(ngModel)]="item.price">
+            [(ngModel)]="item.price"
+            required min="10"
+            #price="ngModel">
 
-    <input name="quantity" 
+    @if (price.invalid && (price.dirty || price.touched)) {
+        @if (price.errors!['required']) {
+            <div class="text-danger mx-3">
+                The price of the product is required
+            </div>
+        }
+        @if (price.errors!['min']) {
+            <div class="text-danger mx-3">
+                The price has to be 10 at least
+            </div>
+        }
+    }
+
+    <input type="number" name="quantity" 
             placeholder="quantity" 
             class="form-control m-3" 
-            [(ngModel)]="item.quantity">
+            [(ngModel)]="item.quantity"
+            required min="1"
+            #quantity="ngModel">
 
-    <button class="btn btn-primary m-3">
+    @if (quantity.invalid && (quantity.dirty || quantity.touched)) {
+        @if (quantity.errors!['required']) {
+            <div class="text-danger mx-3">
+                The quantity of the product is required
+            </div>
+        }
+        @if (quantity.errors!['min']) {
+            <div class="text-danger mx-3">
+                The quantity has to be 1 at least
+            </div>
+        }
+    }
+
+    <button class="btn btn-primary m-3" [disabled]="itemForm.invalid">
         New item
     </button>
 </form>
