@@ -19,9 +19,11 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
 ## ANGULAR-TUTORIAL
 
 Project generated with [Angular CLI] version 17.3.12.
-Contains basic elements such as components, services, methods like OnInit and Constructor and actions such as passing data between parent component and his child.
+Contains basic elements such as components, services, methods like OnInit and Constructor and actions such as passing data between parent component and his child. Alternative and new way with @for, @if and @else instead of ngIf ng-template and ngFor
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
+
+![Alt text](readme-screenshots/angular-tutorial-01.PNG?raw=true "Angular 17 Tutorial")
 
 ## ANGULAR
 
