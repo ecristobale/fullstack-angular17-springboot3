@@ -1,4 +1,9 @@
 <h2>Product Catalog</h2>
 
 <catalog [products]="products" />
-<cart [items]="items" />
+
+@if (items.length > 0) {
+    <cart [items]="items" />
+} @else {
+    <div class="alert alert-warning">There are no elements in the shopping cart</div>
+}
