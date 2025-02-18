@@ -1,5 +1,19 @@
-<navbar [items]="items" (openCloseCartEventEmitter)="openCloseCart()" />
+<navbar [items]="items" (openCartEventEmitter)="openCloseCart()" />
+
 <div class="container my-4">
+    <h2>Product Catalog</h2>
+    <catalog [products]="products" (productEventEmitter)="onAddCart($event)" />
+
+    @if (showCart) {
+        <cart-modal 
+        [items]="items" 
+        [total]="total"
+        (idProductEventEmitter)="onDeleteCart($event)"
+        (closeCartEventEmitter)="openCloseCart()" />
+    }
+</div>
+
+<!-- <div class="container my-4">
     <h2>Product Catalog</h2>
 
     <div class="row">
@@ -10,6 +24,7 @@
             <div class="col-3">
                 <button class="btn btn-secondary btn-sm float-end" (click)="openCloseCart()">Close Cart</button>
                 @if (items.length > 0) {
+                    <h2>Shopping cart</h2>
                     <cart 
                         [items]="items" 
                         [total]="total"
@@ -20,7 +35,4 @@
             </div>
         }
     </div>
-</div>
-
-
-
+</div> -->

@@ -11,10 +11,10 @@ export class NavbarComponent {
 
   @Input() items: CartItem[] = [];
 
-  @Output() openCloseCartEventEmitter = new EventEmitter();
+  @Output() openCartEventEmitter = new EventEmitter();
 
-  openCloseCart(): void {
-    this.openCloseCartEventEmitter.emit();
+  openCart(): void {
+    this.openCartEventEmitter.emit();
   }
 
 }
