@@ -2,11 +2,31 @@
 
 ## DESCRIPTION
 The **goal** of this project is to provide a starter kit for a **fullstack** web application using latest versions. It provides:
- * a frontend via Angular 17
- * a backend via Spring Boot 3
+ * a frontend via Angular 17.
+ * a backend via Spring Boot 3.
  * a cart Angular 17 webapp.
+ * a cart Angular 17 webapp (old version). With modal.
  * an invoice Angular 17 webapp. Actions such as adding and deleting elements. 
- * a tutorial Angular 17 webapp with the basics elements: angular-tutorial
+ * a tutorial Angular 17 webapp with the basics elements: angular-tutorial.
+
+## ANGULAR-CART (OLD)
+
+Project generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.12.
+The project is structured in one component that has some subcomponents, some of them has another subcomponents. It can be saw how the data is passed across the components in either directions. Actions such as adding and deleting elements filling a Shopping Cart that can be displayed as a hidden div or as a modal by clicking on the navbar. Values of Shopping Cart remains stored by saving them on sessionStorage. Styles with Bootstrap 5.3.
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
+
+Components created:
+![Alt text](readme-screenshots/angular-cart-old-04.PNG?raw=true "Cart_old Angular 17 Components")
+
+Cart app:
+![Alt text](readme-screenshots/angular-cart-old-01.PNG?raw=true "Cart_old Angular 17")
+
+Shopping Cart displayed in Modal:
+![Alt text](readme-screenshots/angular-cart-old-02.PNG?raw=true "Cart_old Angular 17 Shopping Cart Modal")
+
+Shopping Cart hidden in Div:
+![Alt text](readme-screenshots/angular-cart-old-03.PNG?raw=true "Cart_old Angular 17 Shopping Cart hidden Div")
 
 ## ANGULAR-INVOICE
 
