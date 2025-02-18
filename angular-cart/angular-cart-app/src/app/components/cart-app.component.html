@@ -1,12 +1,24 @@
 <h2>Product Catalog</h2>
+<button class="btn btn-info btn-sm" (click)="openCloseCart()">Show Cart ({{items.length}})</button>
 
-<catalog [products]="products" (productEventEmitter)="onAddCart($event)" />
+<div class="row">
+    <div class="col-9" [className]="showCart? 'col-9':'col'">
+        <catalog [products]="products" (productEventEmitter)="onAddCart($event)" />
+    </div>
+    @if (showCart) {
+        <div class="col-3">
+            <button class="btn btn-secondary btn-sm float-end" (click)="openCloseCart()">Close Cart</button>
+            @if (items.length > 0) {
+                <cart 
+                    [items]="items" 
+                    [total]="total"
+                    (idProductEventEmitter)="onDeleteCart($event)" />
+            } @else {
+                <div class="alert alert-warning">There are no elements in the shopping cart</div>
+            }
+        </div>
+    }
+</div>
 
-@if (items.length > 0) {
-    <cart 
-        [items]="items" 
-        [total]="total"
-        (idProductEventEmitter)="onDeleteCart($event)" />
-} @else {
-    <div class="alert alert-warning">There are no elements in the shopping cart</div>
-}
+
+
