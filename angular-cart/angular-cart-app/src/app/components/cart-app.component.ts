@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../services/product.service';
-import { CatalogComponent } from './catalog/catalog.component';
 import { CartItem } from '../models/cartItem';
 import { NavbarComponent } from './navbar/navbar.component';
 import { Router, RouterOutlet } from '@angular/router';
@@ -21,38 +19,20 @@ export class CartAppComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private sharingDataService: SharingDataService, 
-    private service: ProductService) {}
+    private sharingDataService: SharingDataService) {}
 
   ngOnInit(): void {
     // this.items = JSON.parse(sessionStorage.getItem('cart')!) || [];
     this.items = JSON.parse(sessionStorage.getItem('cart') || '[]');
-    this.calculateTotal();
+    // this.calculateTotal();
     this.onDeleteCart();
     this.onAddCart();
   }
 
   onAddCart(): void {
     this.sharingDataService.productEventEmitter.subscribe( product => {
-      console.log('Event productEventEmitter executed, product.name: ' + product.name);
-      // const hasItem = this.items.find(item => {
-      //   return item.product.id === product.id;
-      // });
-      const hasItem = this.items.find(item => item.product.id === product.id);
-      if(hasItem) {
-        this.items = this.items.map(item => {
-          if (item.product.id === product.id) {
-            return {
-              ... item, 
-              quantity: ++item.quantity
-            };
-          }
-          return item;
-        });
-      } else {
-        this.items = [... this.items, {product: {... product}, quantity: 1}];
-      }
-      this.calculateTotal();
+      
+      // this.calculateTotal();
       this.saveSession();
       this.router.navigate(['/cart'], {
         state: {items: this.items, total: this.total}
@@ -67,7 +47,6 @@ export class CartAppComponent implements OnInit {
 
   onDeleteCart(): void {
     this.sharingDataService.idProductEventEmitter.subscribe( productId => {
-      console.log('Event idProductEventEmitter executed, productId: ' + productId);
 
       Swal.fire({
         title: "Are you sure?",
@@ -79,22 +58,8 @@ export class CartAppComponent implements OnInit {
         confirmButtonText: "Yes, delete it!"
       }).then((result) => {
         if (result.isConfirmed) {
-          const hasItem = this.items.find(item => item.product.id === productId && item.quantity > 1);
-      
-          if(hasItem) {
-            this.items = this.items.map(item => {
-              if (item.product.id === productId && item.quantity > 1) {
-                return {
-                  ... item, 
-                  quantity: --item.quantity
-                };
-              }
-              return item;
-            });
-          } else {
-            this.items = this.items.filter(item => item.product.id !== productId);
-          }
-          this.calculateTotal();
+          
+          // this.calculateTotal();
           this.saveSession();
     
           this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
@@ -108,10 +73,6 @@ export class CartAppComponent implements OnInit {
         }
       });
     });
-  }
-
-  calculateTotal(): void {
-    this.total = this.items.reduce((accumulator, item) => accumulator + (item.quantity * item.product.price), 0);
   }
 
   saveSession(): void {
