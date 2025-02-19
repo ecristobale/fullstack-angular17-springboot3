@@ -10,6 +10,16 @@ The **goal** of this project is to provide a starter kit for a **fullstack** web
  * an invoice Angular 17 webapp. Actions such as adding and deleting elements. 
  * a tutorial Angular 17 webapp with the basics elements: angular-tutorial.
 
+## ANGULAR-NGRX (Redux)
+
+Project generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.12.
+Redux project that is configured to manage counter actions (increment, decrease, reset) by using store actions with props and reducer.
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
+
+NgRx code:
+![Alt text](readme-screenshots/angular-ngrx-01.PNG?raw=true "Cart_old Angular 17 Components")
+
 ## ANGULAR-CART (angular routes)
 
 Project generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.12.
