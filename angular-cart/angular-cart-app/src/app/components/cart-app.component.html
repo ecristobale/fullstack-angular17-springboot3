@@ -4,7 +4,9 @@
     <h2>Product Catalog</h2>
     <catalog [products]="products" (productEventEmitter)="onAddCart($event)" />
 
+    <router-outlet></router-outlet>
 </div>
+
 
 <!-- <div class="container my-4">
     <h2>Product Catalog</h2>
