@@ -25,7 +25,7 @@ export const itemsReducer = createReducer(
                     if (item.product.id === product.id) {
                         return {
                             ... item, 
-                            quantity: ++item.quantity
+                            quantity: item.quantity + 1
                         };
                     }
                     return item;
@@ -49,7 +49,7 @@ export const itemsReducer = createReducer(
                     if (item.product.id === productId && item.quantity > 1) {
                     return {
                         ... item, 
-                        quantity: --item.quantity
+                        quantity: item.quantity - 1
                     };
                     }
                     return item;

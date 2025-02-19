@@ -4,6 +4,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { Router, RouterOutlet } from '@angular/router';
 import { SharingDataService } from '../services/sharing-data.service';
 import Swal from 'sweetalert2';
+import { Store } from '@ngrx/store';
+import { ItemsState } from '../store/items.reducer';
+import { add, remove, total } from '../store/items.actions';
 
 @Component({
   selector: 'cart-app',
@@ -18,13 +21,18 @@ export class CartAppComponent implements OnInit {
   total: number = 0;
 
   constructor(
+    private store: Store<{items: ItemsState}>,
     private router: Router,
-    private sharingDataService: SharingDataService) {}
+    private sharingDataService: SharingDataService) {
+      this.store.select('items').subscribe(state => {
+        this.items = state.items;
+        this.total = state.total;
+        this.saveSession();
+        console.log('state changed');
+      });
+    }
 
   ngOnInit(): void {
-    // this.items = JSON.parse(sessionStorage.getItem('cart')!) || [];
-    this.items = JSON.parse(sessionStorage.getItem('cart') || '[]');
-    // this.calculateTotal();
     this.onDeleteCart();
     this.onAddCart();
   }
@@ -32,8 +40,9 @@ export class CartAppComponent implements OnInit {
   onAddCart(): void {
     this.sharingDataService.productEventEmitter.subscribe( product => {
       
-      // this.calculateTotal();
-      this.saveSession();
+      this.store.dispatch(add({product: product}));
+      this.store.dispatch(total());
+      
       this.router.navigate(['/cart'], {
         state: {items: this.items, total: this.total}
       });
@@ -58,9 +67,9 @@ export class CartAppComponent implements OnInit {
         confirmButtonText: "Yes, delete it!"
       }).then((result) => {
         if (result.isConfirmed) {
-          
-          // this.calculateTotal();
-          this.saveSession();
+
+          this.store.dispatch(remove({productId: productId}));
+          this.store.dispatch(total());
     
           this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
             this.router.navigate(['/cart'], {state: {items: this.items, total: this.total}});
