@@ -5,6 +5,7 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { CartItem } from '../models/cartItem';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterOutlet } from '@angular/router';
+import { SharingDataService } from '../services/sharing-data.service';
 
 @Component({
   selector: 'cart-app',
@@ -20,13 +21,14 @@ export class CartAppComponent implements OnInit {
 
   total: number = 0;
 
-  constructor(private service: ProductService) {}
+  constructor(private sharingDataService: SharingDataService, private service: ProductService) {}
 
   ngOnInit(): void {
     this.products = this.service.findAll();
     // this.items = JSON.parse(sessionStorage.getItem('cart')!) || [];
     this.items = JSON.parse(sessionStorage.getItem('cart') || '[]');
     this.calculateTotal();
+    this.onDeleteCart();
   }
 
   onAddCart(product: Product): void {
@@ -51,24 +53,28 @@ export class CartAppComponent implements OnInit {
     this.saveSession();
   }
 
-  onDeleteCart(productId: number): void {
-    const hasItem = this.items.find(item => item.product.id === productId && item.quantity > 1);
+  onDeleteCart(): void {
+    this.sharingDataService.idProductEventEmitter.subscribe( productId => {
+      console.log('Event idProductEventEmitter executed, productId: ' + productId);
+      const hasItem = this.items.find(item => item.product.id === productId && item.quantity > 1);
+  
+      if(hasItem) {
+        this.items = this.items.map(item => {
+          if (item.product.id === productId && item.quantity > 1) {
+            return {
+              ... item, 
+              quantity: --item.quantity
+            };
+          }
+          return item;
+        });
+      } else {
+        this.items = this.items.filter(item => item.product.id !== productId);
+      }
+      this.calculateTotal();
+      this.saveSession();
 
-    if(hasItem) {
-      this.items = this.items.map(item => {
-        if (item.product.id === productId && item.quantity > 1) {
-          return {
-            ... item, 
-            quantity: --item.quantity
-          };
-        }
-        return item;
-      });
-    } else {
-      this.items = this.items.filter(item => item.product.id !== productId);
-    }
-    this.calculateTotal();
-    this.saveSession();
+    });
   }
 
   calculateTotal(): void {
