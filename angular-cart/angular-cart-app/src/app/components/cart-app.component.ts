@@ -18,15 +18,12 @@ export class CartAppComponent implements OnInit {
 
   items: CartItem[] = [];
 
-  total: number = 0;
-
   constructor(
     private store: Store<{items: ItemsState}>,
     private router: Router,
     private sharingDataService: SharingDataService) {
       this.store.select('items').subscribe(state => {
         this.items = state.items;
-        this.total = state.total;
         this.saveSession();
         console.log('state changed');
       });
@@ -43,9 +40,7 @@ export class CartAppComponent implements OnInit {
       this.store.dispatch(add({product: product}));
       this.store.dispatch(total());
       
-      this.router.navigate(['/cart'], {
-        state: {items: this.items, total: this.total}
-      });
+      this.router.navigate(['/cart']);
       Swal.fire({
         title: 'Shopping Cart',
         text: 'New product added to the cart',
@@ -70,10 +65,8 @@ export class CartAppComponent implements OnInit {
 
           this.store.dispatch(remove({productId: productId}));
           this.store.dispatch(total());
-    
-          this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
-            this.router.navigate(['/cart'], {state: {items: this.items, total: this.total}});
-          });
+          this.router.navigate(['/cart']);
+          
           Swal.fire({
             title: "Deleted!",
             text: "Item has been removed from the Shopping Cart.",
