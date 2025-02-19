@@ -4,10 +4,36 @@
 The **goal** of this project is to provide a starter kit for a **fullstack** web application using latest versions. It provides:
  * a frontend via Angular 17.
  * a backend via Spring Boot 3.
- * a cart Angular 17 webapp.
+ * a redux (NgRx) Angular 17 basic app.
+ * a cart Angular 17 webapp with angular routes.
  * a cart Angular 17 webapp (old version). With modal.
  * an invoice Angular 17 webapp. Actions such as adding and deleting elements. 
  * a tutorial Angular 17 webapp with the basics elements: angular-tutorial.
+
+## ANGULAR-CART (angular routes)
+
+Project generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.12.
+Project that uses angular routes for using its basic components such as [routerLink], [state] for passing elements, <router-outlet> to display path elements. It is also created a service for emit and subscribe info for passing data across the components. It is also used sessionStorage for maintaining the elements in the Shopping Cart. Alert messages with SweetAlert2 library. Styles with [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/) version 5.3.
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
+
+Catalog component:
+![Alt text](readme-screenshots/angular-cart-route-01.PNG?raw=true "Cart_old Angular 17 Components")
+
+Alert element added to Shopping Cart:
+![Alt text](readme-screenshots/angular-cart-route-02.PNG?raw=true "Cart_old Angular 17")
+
+Alert displayed when trying to delete an item from Shopping Cart:
+![Alt text](readme-screenshots/angular-cart-route-03.PNG?raw=true "Cart_old Angular 17 Shopping Cart Modal")
+
+Alert element removed from Shopping Cart:
+![Alt text](readme-screenshots/angular-cart-route-04.PNG?raw=true "Cart_old Angular 17 Shopping Cart hidden Div")
+
+Shopping Cart component:
+![Alt text](readme-screenshots/angular-cart-route-05.PNG?raw=true "Cart_old Angular 17 Shopping Cart hidden Div")
+
+Code about angular routes and subscribing to an event:
+![Alt text](readme-screenshots/angular-cart-route-06.PNG?raw=true "Cart_old Angular 17 Shopping Cart hidden Div")
 
 ## ANGULAR-CART (OLD)
 
