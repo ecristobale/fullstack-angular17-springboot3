@@ -4,11 +4,13 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideStore } from '@ngrx/store';
 import { itemsReducer } from './store/items.reducer';
+import { productsReducer } from './store/products.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideStore(
     {
-      items: itemsReducer
+      items: itemsReducer,
+      products: productsReducer
     }
   )]
 };
