@@ -22,5 +22,4 @@ export class ProductsEffects {
         private service: ProductService) {
 
     }
-    
 }

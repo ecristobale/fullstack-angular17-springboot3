@@ -4,11 +4,19 @@
 The **goal** of this project is to provide a starter kit for a **fullstack** web application using latest versions. It provides:
  * a frontend via Angular 17.
  * a backend via Spring Boot 3.
+ * a cart Angular 17 webapp with angular routes and redux.
  * a redux (NgRx) Angular 17 basic app.
  * a cart Angular 17 webapp with angular routes.
  * a cart Angular 17 webapp (old version). With modal.
  * an invoice Angular 17 webapp. Actions such as adding and deleting elements. 
  * a tutorial Angular 17 webapp with the basics elements: angular-tutorial.
+
+## ANGULAR-CART (angular routes, NgRx)
+
+Project generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.12.
+Project that uses angular NgRx for managing app actions by using store and effects. Alert messages with SweetAlert2 library. Styles with [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/) version 5.3.
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
 
 ## ANGULAR-NGRX (Redux)
 
