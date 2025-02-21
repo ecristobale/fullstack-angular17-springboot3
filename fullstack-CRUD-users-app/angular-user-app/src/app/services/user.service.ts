@@ -12,14 +12,14 @@ export class UserService {
     name: 'John',
     lastname: 'Doe',
     email: 'johndoe@fjkajklweruvjlktiouyuiz.weriouvc',
-    username: 'john',
+    username: 'johndfdf',
     password: '123456'
   },{
     id: 2,
     name: 'Juan',
     lastname: 'Doe',
     email: 'juandoe@fjkajklweruvjlktiouyuiz.weriouvc',
-    username: 'juan',
+    username: 'juandfdf',
     password: '123456'
   }]
 

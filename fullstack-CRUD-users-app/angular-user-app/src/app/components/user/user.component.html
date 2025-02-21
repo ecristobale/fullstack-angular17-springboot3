@@ -9,6 +9,7 @@
                 <th>lastname</th>
                 <th>email</th>
                 <th>username</th>
+                <th>edit</th>
                 <th>remove</th>
             </tr>
         </thead>
@@ -20,6 +21,12 @@
                     <td>{{user.lastname}}</td>
                     <td>{{user.email}}</td>
                     <td>{{user.username}}</td>
+                    <td>
+                        <button class="btn btn-info sm"
+                            (click)="onSelectedUser(user)">
+                            edit
+                        </button>
+                    </td>
                     <td>
                         <button class="btn btn-danger sm"
                             (click)="onRemoveUser(user.id)">
