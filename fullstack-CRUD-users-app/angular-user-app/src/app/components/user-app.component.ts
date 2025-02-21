@@ -18,6 +18,8 @@ export class UserAppComponent implements OnInit {
 
   userSelected: User;
 
+  open: boolean = false;
+
   constructor(private service: UserService) {
     this.userSelected = new User();
   }
@@ -33,18 +35,41 @@ export class UserAppComponent implements OnInit {
       this.users = [... this.users, {... user, id: new Date().getTime()}];
     }
     Swal.fire({
-      title: "Good job!",
-      text: "You clicked the button!",
+      title: "Saved!",
+      text: "User was successfully saved!",
       icon: "success"
     });
     this.userSelected = new User();
+    this.setOpen();
   }
 
   removeUser(userId: number): void {
-    this.users = this.users.filter(user => user.id !== userId);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "User will be removed from the system!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.users = this.users.filter(user => user.id !== userId);
+        Swal.fire({
+          title: "Removed!",
+          text: "User has been successfully removed.",
+          icon: "success"
+        });
+      }
+    });
   }
 
   setSelectedUser(userRow: User): void {
     this.userSelected = {... userRow};
+    this.open = true;
+  }
+
+  setOpen(): void {
+    this.open = !this.open;
   }
 }

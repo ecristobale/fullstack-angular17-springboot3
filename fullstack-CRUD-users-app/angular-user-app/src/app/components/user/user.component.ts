@@ -15,10 +15,10 @@ export class UserComponent {
   @Output() selectedUserEventEmitter: EventEmitter<User> = new EventEmitter();
 
   onRemoveUser(userId: number): void {
-    const confirmRemove = confirm('Are you sure? User will be removed permanently.');
-    if (confirmRemove) {
+    // const confirmRemove = confirm('Are you sure? User will be removed permanently.');
+    // if (confirmRemove) {
       this.idUserEventEmitter.emit(userId);
-    }
+    // }
   }
 
   onSelectedUser(user: User): void {
