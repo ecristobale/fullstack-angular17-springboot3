@@ -3,6 +3,7 @@ import { User } from '../models/user';
 import { UserService } from '../services/user.service';
 import { UserComponent } from './user/user.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'user-app',
@@ -31,6 +32,11 @@ export class UserAppComponent implements OnInit {
     } else {
       this.users = [... this.users, {... user, id: new Date().getTime()}];
     }
+    Swal.fire({
+      title: "Good job!",
+      text: "You clicked the button!",
+      icon: "success"
+    });
     this.userSelected = new User();
   }
 
