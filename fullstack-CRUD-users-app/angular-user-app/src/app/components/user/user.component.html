@@ -27,7 +27,7 @@
                     <td>{{user.username}}</td>
                     <td>
                         <button class="btn btn-info sm"
-                            (click)="onSelectedUser(user)">
+                            [routerLink]="['/users/edit', user.id]">
                             edit
                         </button>
                     </td>
