@@ -8,7 +8,8 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'user-app',
   imports: [UserComponent, UserFormComponent],
-  templateUrl: './user-app.component.html'
+  templateUrl: './user-app.component.html',
+  styleUrl: './user-app.component.css'
 })
 export class UserAppComponent implements OnInit {
 
