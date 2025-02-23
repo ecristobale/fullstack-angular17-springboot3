@@ -31,7 +31,7 @@ public class UserController {
         return this.userService.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{userId}")
     public ResponseEntity<?> show(@PathVariable Long userId){
         Optional<User> userOptional = this.userService.findById(userId);
         if (userOptional.isPresent()) {
@@ -46,7 +46,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{userId}")
     public ResponseEntity<User> update(@PathVariable Long userId, @RequestBody User user) {
         Optional<User> userOptional = userService.findById(userId);
         if (userOptional.isPresent()){
@@ -62,7 +62,7 @@ public class UserController {
         return ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{userId}")
     public ResponseEntity<?> delete(@PathVariable Long userId) {
         Optional<User> userOptional = userService.findById(userId);
         if (userOptional.isPresent()){
