@@ -8,7 +8,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -19,11 +18,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty //for characters chain, for numbers and dates @NotNull
+    @NotBlank //for numbers and dates @NotNull
     @Column(name = "name") //optional anotation if field name the same in DB
     private String name;
 
-    @NotEmpty
+    @NotBlank
     private String lastname;
 
     @NotBlank
@@ -31,11 +30,11 @@ public class User {
     private String email;
 
     @NotBlank
-    @Size(min = 8)
+    @Size(min = 8, max = 30)
     private String username;
 
     @NotBlank
-    @Size(min = 6)
+    @Size(min = 6, max = 30)
     private String password;
 
     public Long getId() {

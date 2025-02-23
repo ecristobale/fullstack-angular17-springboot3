@@ -27,13 +27,13 @@
 			"response": []
 		},
 		{
-			"name": "UPDATE user",
+			"name": "UPDATE user INVALID",
 			"request": {
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": 4,\r\n    \"name\": \"updatefield\",\r\n    \"lastname\": \"newlastname\",\r\n    \"email\": \"newmailjohndoe@gmail.com\",\r\n    \"username\": \"newjonndoeee\",\r\n    \"password\": \"new54321678\"\r\n}",
+					"raw": "{\r\n    \"id\": 3,\r\n    \"name\": \"\",\r\n    \"lastname\": \"  \",\r\n    \"email\": \"newmail\",\r\n    \"username\": \"f\",\r\n    \"password\": \"asdf\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -41,7 +41,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/users/4",
+					"raw": "localhost:8080/api/users/3",
 					"host": [
 						"localhost"
 					],
@@ -49,7 +49,64 @@
 					"path": [
 						"api",
 						"users",
-						"4"
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE user",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 3,\r\n    \"name\": \"updatefield\",\r\n    \"lastname\": \"newlastname\",\r\n    \"email\": \"newmailjohndoe@gmail.com\",\r\n    \"username\": \"newjonndoeee\",\r\n    \"password\": \"new54321678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/users/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE user INVALID",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"\",\r\n    \"lastname\": \"  \",\r\n    \"email\": \"newmail\",\r\n    \"username\": \"\",\r\n    \"password\": \"asdf\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users"
 					]
 				}
 			},
