@@ -42,21 +42,48 @@ export class UserAppComponent implements OnInit {
   addUser(): void {
     this.sharingData.newUserEventEmitter.subscribe(user => {
       if (user.id > 0) {
-        this.service.update(user).subscribe(userUpdated => {
-          this.users = this.users.map(u => (u.id === userUpdated.id )? ({... userUpdated}) : u);
-          this.router.navigate(['/users']);
-        });
+        this.service.update(user).subscribe(
+          {
+            next: (userUpdated) => {
+              this.users = this.users.map(u => (u.id === userUpdated.id )? ({... userUpdated}) : u);
+              this.router.navigate(['/users']);
+
+              Swal.fire({
+                title: "Updated!",
+                text: "User was successfully updated!",
+                icon: "success"
+              });
+            },
+            error: (err) =>{
+              // console.log(err.error);
+              if (err == 400) {
+                this.sharingData.errorsUserFormEventEmitter.emit(err.error);
+              }
+            }
+          });
       } else {
-        this.service.create(user).subscribe(userCreated => {
-          this.users = [... this.users, {... userCreated}];
-          this.router.navigate(['/users']);
-        })
+        this.service.create(user).subscribe(
+          {
+            next: userCreated => {
+              this.users = [... this.users, {... userCreated}];
+              this.router.navigate(['/users']);
+
+              Swal.fire({
+                title: "Created!",
+                text: "User was successfully created!",
+                icon: "success"
+              });
+
+            },
+            error: (err) =>{
+              // console.log(err.error);
+              if (err == 400) {
+                this.sharingData.errorsUserFormEventEmitter.emit(err.error);
+              }
+            }
+          }
+          )
       }
-      Swal.fire({
-        title: "Saved!",
-        text: "User was successfully saved!",
-        icon: "success"
-      });
     });
   }
 

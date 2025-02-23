@@ -13,6 +13,7 @@ import { UserService } from '../../services/user.service';
 export class UserFormComponent implements OnInit {
 
   user: User;
+  errors: any = {};
 
   constructor(private route: ActivatedRoute,
               private service: UserService,
@@ -22,6 +23,7 @@ export class UserFormComponent implements OnInit {
 
   ngOnInit(): void {
     // this.sharingData.selectUserEventEmitter.subscribe(user => this.user = user);
+    this.sharingData.errorsUserFormEventEmitter.subscribe(errors => this.errors = errors);
 
     this.route.paramMap.subscribe(params => {
       const userId: number = +(params.get('userId') || '0');
