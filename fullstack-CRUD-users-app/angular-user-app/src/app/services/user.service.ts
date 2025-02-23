@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
-import { map, Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -10,10 +10,15 @@ export class UserService {
 
   private users: User[] = [];
 
+  private url: string = 'http://localhost:8080/api/users';
+
   constructor(private http: HttpClient) { }
 
   findAll(): Observable<User[]> {
-    // return of(this.users);
-    return this.http.get<User[]>('http://localhost:8080/api/users');
+    return this.http.get<User[]>(this.url);
+  }
+
+  findById(userId: number): Observable<User> {
+    return this.http.get<User>(`${this.url}/${userId}`);
   }
 }
