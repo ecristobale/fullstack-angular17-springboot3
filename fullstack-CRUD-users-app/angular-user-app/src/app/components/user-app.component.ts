@@ -26,7 +26,7 @@ export class UserAppComponent implements OnInit {
   ngOnInit(): void {
     this.service.findAll().subscribe( users => this.users = users );
     this.addUser();
-    this.removeUser();
+    this.deleteUser();
     this.findUserById();
   }
 
@@ -60,7 +60,7 @@ export class UserAppComponent implements OnInit {
     });
   }
 
-  removeUser(): void {
+  deleteUser(): void {
     this.sharingData.idUserEventEmitter.subscribe(userId => {
       Swal.fire({
         title: "Are you sure?",
@@ -72,11 +72,14 @@ export class UserAppComponent implements OnInit {
         confirmButtonText: "Yes"
       }).then((result) => {
         if (result.isConfirmed) {
-          this.users = this.users.filter(user => user.id !== userId);
-          // refresh of /users
-          this.router.navigate(['/users/create'], {skipLocationChange: true}).then(()=> {
-            this.router.navigate(['/users'], { state: {users: this.users} });
-          });
+
+          this.service.delete(userId).subscribe(() => {
+            this.users = this.users.filter(user => user.id !== userId);
+            // refresh of /users
+            this.router.navigate(['/users/create'], {skipLocationChange: true}).then(()=> {
+              this.router.navigate(['/users']);
+            });
+          })
           Swal.fire({
             title: "Removed!",
             text: "User has been successfully removed.",
