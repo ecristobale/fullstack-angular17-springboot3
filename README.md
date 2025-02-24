@@ -13,6 +13,23 @@ The **goal** of this project is to provide a starter kit for a **fullstack** web
 	- an invoice Angular 17 webapp. Actions such as adding and deleting elements. 
 	- a tutorial Angular 17 webapp with the basics elements: angular-tutorial.
 
+## USERS FULLSTACK APPLICATION (SPRING BOOT 3, ANGULAR 17+)
+
+Frontend: 
+Project generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.12.
+Project that uses:
+ * Components: passing data between components and subcomponents via @Output() and @Input() annotations.
+ * Angular routes: passing data between components via angular routes: <a [routerLink]="['/mypath']" [state]="{objectData1, objectData2}" and retrieving this data from the destiny component with Router: this.router.getCurrentNavigation()?.extras.state!['objectData1'] and also with ActivatedRoute for request params (path/:myId)
+ * Services: from which they emit an event by using EventEmmiters and data could be passed by subscribing to these events.
+ * HttpClient: for connecting to api, expecting an observable Object.
+ * Pagination: with a subcomponent and by using [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/) version 5.3 and Angular Routes to transfer page, totalPages and some metainfo retrieved from backend api.
+ * Customized Alert messages with SweetAlert2 library. 
+ * Html class styles with [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/) version 5.3.
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
+
+
+
 ## ANGULAR-CART (angular routes, NgRx)
 
 Project generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.12.
