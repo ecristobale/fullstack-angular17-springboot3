@@ -1,15 +1,17 @@
 # FULLSTACK WEBAPP: ANGULAR 17 & SPRING BOOT 3
 
 ## DESCRIPTION
-The **goal** of this project is to provide a starter kit for a **fullstack** web application using latest versions. It provides:
- * a frontend via Angular 17.
- * a backend via Spring Boot 3.
- * a cart Angular 17 webapp with angular routes and redux.
- * a redux (NgRx) Angular 17 basic app.
- * a cart Angular 17 webapp with angular routes.
- * a cart Angular 17 webapp (old version). With modal.
- * an invoice Angular 17 webapp. Actions such as adding and deleting elements. 
- * a tutorial Angular 17 webapp with the basics elements: angular-tutorial.
+The **goal** of this project is to provide a starter kit for a **fullstack** web application using latest versions: **Spring Boot 3** and **Angular 17+** . There are some subprojects:
+ * Main project: users fullstack application
+	- a frontend via Angular 17.
+	- a backend via Spring Boot 3.
+ * Angular applications:
+	- a cart Angular 17 webapp with angular routes and redux.
+	- a redux (NgRx) Angular 17 basic app.
+	- a cart Angular 17 webapp with angular routes.
+	- a cart Angular 17 webapp (old version). With modal.
+	- an invoice Angular 17 webapp. Actions such as adding and deleting elements. 
+	- a tutorial Angular 17 webapp with the basics elements: angular-tutorial.
 
 ## ANGULAR-CART (angular routes, NgRx)
 
