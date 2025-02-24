@@ -13,22 +13,64 @@ The **goal** of this project is to provide a starter kit for a **fullstack** web
 	- an invoice Angular 17 webapp. Actions such as adding and deleting elements. 
 	- a tutorial Angular 17 webapp with the basics elements: angular-tutorial.
 
-## USERS FULLSTACK APPLICATION (SPRING BOOT 3, ANGULAR 17+)
+## USERS FULLSTACK APPLICATION (SPRING BOOT 3, ANGULAR 19)
 
-Frontend: 
-Project generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.12.
+### Frontend: ANGULAR 19 (17+)
+Project generated with [Angular CLI](https://github.com/angular/angular-cli) version 19.1.8.
 Project that uses:
  * Components: passing data between components and subcomponents via @Output() and @Input() annotations.
- * Angular routes: passing data between components via angular routes: <a [routerLink]="['/mypath']" [state]="{objectData1, objectData2}" and retrieving this data from the destiny component with Router: this.router.getCurrentNavigation()?.extras.state!['objectData1'] and also with ActivatedRoute for request params (path/:myId)
+ * Angular routes: passing data between components via angular routes: 
+ ```<a [routerLink]="['/mypath']" [state]="{objectData1, objectData2}"```
+ and retrieving this data from the destiny component with Router: ```this.router.getCurrentNavigation()?.extras.state!['objectData1']``` and also with ActivatedRoute for request params (path/:myId)
  * Services: from which they emit an event by using EventEmmiters and data could be passed by subscribing to these events.
  * HttpClient: for connecting to api, expecting an observable Object.
  * Pagination: with a subcomponent and by using [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/) version 5.3 and Angular Routes to transfer page, totalPages and some metainfo retrieved from backend api.
  * Customized Alert messages with SweetAlert2 library. 
  * Html class styles with [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/) version 5.3.
+ * Used new @If and @else instead of angular directives ngIf and ngFor
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
 
+### Backend: SPRING BOOT 3
+Spring boot starter.
+Project that uses:
+ * Normal Spring Boot components: (Rest)Controller, Service, Repository, Entity mapped to DB tables and columns
+ * Validations for entity with Hibernate
+ * Pagination with Pageable object
+ * H2 in memory DB: with schema.sql and data.sql for configuration
+ * Api links and OK and error responses tested with Postman (collection added to the project)
+ 
+### Screenshots:
 
+Users view:
+![Alt text](readme-screenshots/fullstack-users-01.PNG?raw=true "Users view Angular 19")
+
+Form create user:
+![Alt text](readme-screenshots/fullstack-users-02.PNG?raw=true "Form create user Angular 19")
+
+Alert user created:
+![Alt text](readme-screenshots/fullstack-users-03.PNG?raw=true "Alert user created Angular 19")
+
+Form update user:
+![Alt text](readme-screenshots/fullstack-users-04.PNG?raw=true "Form update user Angular 19")
+
+Alert remove user:
+![Alt text](readme-screenshots/fullstack-users-05.PNG?raw=true "Alert remove user Angular 19")
+
+Angular 19 Code 1:
+![Alt text](readme-screenshots/fullstack-users-06.PNG?raw=true "Code 1 Angular 19")
+
+Angular 19 Code 2:
+![Alt text](readme-screenshots/fullstack-users-07.PNG?raw=true "Code 1 Angular 19")
+
+Spring Boot 3 Code:
+![Alt text](readme-screenshots/fullstack-users-08.PNG?raw=true "Code 1 Spring Boot 3")
+
+Postman collection:
+![Alt text](readme-screenshots/fullstack-users-09.PNG?raw=true "Code 1 Spring Boot 3")
+
+
+ 
 
 ## ANGULAR-CART (angular routes, NgRx)
 
