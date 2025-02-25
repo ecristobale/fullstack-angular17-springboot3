@@ -5,8 +5,8 @@ VALUES
 
 INSERT INTO users (name, lastname, email, created_at, username, password) 
 VALUES 
-('Eduardo', 'Cristóbal', 'ecristobale1@ecris4tobale.ecristobale', '2025-02-15 16:50:12.646', 'username', 'password'),
-('Admin', 'JohnDoe', 'ecristobale1@ecrist3obale.ecristobale', '2025-02-15 16:52:12.646', 'admin', '123456'),
+('Eduardo', 'Cristóbal', 'ecristobale1@ecris4tobale.ecristobale', '2025-02-15 16:50:12.646', 'username', '$2a$10$DOMDxjYyfZ/e7RcBfUpzqeaCs8pLgcizuiQWXPkU35nOhZlFcE9MS'),
+('Admin', 'JohnDoe', 'ecristobale1@ecrist3obale.ecristobale', '2025-02-15 16:52:12.646', 'admin', '$2a$10$DOMDxjYyfZ/e7RcBfUpzqeaCs8pLgcizuiQWXPkU35nOhZlFcE9MS'),
 ('Ecristobale', 'Doe', 'ecristobale@ecristobale.ecristobale', '2025-02-15 16:54:12.646', 'ecristobale', 'estoesunapwd'),
 ('Ecristobale1', 'Doe1', 'ecristobale1@ecristobale.ecristobale', '2025-02-16 16:50:42.646', 'ecristobale1', 'estoesunapwd'),
 ('Ecristobale2', 'Doe2', 'ecristobale2@ecristobale.ecristobale', '2025-02-16 16:55:32.646', 'ecristobale2', 'estoesunapwd'),
