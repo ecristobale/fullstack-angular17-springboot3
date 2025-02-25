@@ -69,6 +69,29 @@
                         }
                 </div>
                 <div>
+                    <mat-form-field>
+                        <input 
+                            matInput [matDatepicker]="picker" 
+                            class="form-control my-2" 
+                            placeholder="Choose a date for creation"
+                            [(ngModel)]="user.createdAt" 
+                            name="createdAt"
+                            required
+                            #createdAt="ngModel" >
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker ></mat-datepicker>
+                    </mat-form-field>
+                    @if (errors?.createdAt) {
+                        <div class="text-danger">{{ errors.createdAt }}</div>
+                    }
+                
+                    @if (createdAt.invalid && (createdAt.dirty || createdAt.touched)) {
+                        @if (createdAt.errors!['required']) {
+                            <div class="text-danger">Creation date is required</div>
+                        }
+                    }
+                </div>
+                <div>
                     <input 
                         placeholder="Username"
                         name="username"
