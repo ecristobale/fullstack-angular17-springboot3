@@ -12,6 +12,7 @@
                 <th>name</th>
                 <th>lastname</th>
                 <th>email</th>
+                <th>creation date</th>
                 <th>username</th>
                 <th>edit</th>
                 <th>remove</th>
@@ -24,6 +25,7 @@
                     <td>{{user.name}}</td>
                     <td>{{user.lastname}}</td>
                     <td>{{user.email}}</td>
+                    <td>{{ user.createdAt | date:"EEEE dd, MMMM yyyy" }}</td>
                     <td>{{user.username}}</td>
                     <td>
                         <button class="btn btn-info sm"

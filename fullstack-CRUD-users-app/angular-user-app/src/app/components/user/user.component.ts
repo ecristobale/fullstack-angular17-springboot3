@@ -4,10 +4,11 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { SharingDataService } from '../../services/sharing-data.service';
 import { PaginatorComponent } from '../paginator/paginator.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'user',
-  imports: [RouterModule, PaginatorComponent],
+  imports: [RouterModule, PaginatorComponent, CommonModule],
   templateUrl: './user.component.html'
 })
 export class UserComponent implements OnInit {
