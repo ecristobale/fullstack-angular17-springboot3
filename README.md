@@ -1,5 +1,11 @@
 # FULLSTACK WEBAPP: ANGULAR 17 & SPRING BOOT 3
 
+## DEVELOPER
+ * Eduardo Cristóbal
+ * Linkedin: [https://www.linkedin.com/in/ecristobale](https://www.linkedin.com/in/ecristobale)
+ * GitHub: [https://github.com/ecristobale](https://github.com/ecristobale)
+ * Email: [Eduardo Cristóbal - email](mailto:edu_ce_1988@hotmail.com?subject=[GitHub]%20Source%20Han%20Sans)
+
 ## DESCRIPTION
 The **goal** of this project is to provide a starter kit for a **fullstack** web application using latest versions: **Spring Boot 3** and **Angular 17+** . There are some subprojects:
  * Main project: users fullstack application

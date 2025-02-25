@@ -5,10 +5,11 @@ import Swal from 'sweetalert2';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SharingDataService } from '../services/sharing-data.service';
+import { FooterComponent } from './footer/footer.component';
 
 @Component({
   selector: 'user-app',
-  imports: [RouterOutlet, NavbarComponent],
+  imports: [RouterOutlet, NavbarComponent, FooterComponent],
   templateUrl: './user-app.component.html',
   styleUrl: './user-app.component.css'
 })
