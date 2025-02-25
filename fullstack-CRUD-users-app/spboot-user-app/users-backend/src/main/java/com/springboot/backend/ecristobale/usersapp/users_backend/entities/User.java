@@ -1,13 +1,18 @@
 package com.springboot.backend.ecristobale.usersapp.users_backend.entities;
 
+import java.util.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -28,6 +33,16 @@ public class User {
     @NotBlank
     @Email
     private String email;
+	
+	@NotNull
+	@Column(name = "created_at")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date createdAt;
+
+    //	@PrePersist
+    //	public void prePersist() {
+    //		createdAt = new Date();
+    //	}
 
     @NotBlank
     @Size(min = 8, max = 30)
@@ -72,6 +87,12 @@ public class User {
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     
