@@ -79,7 +79,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                             .expiration(new Date(System.currentTimeMillis() + 3600000))
                             .compact();
 
-        response.addHeader(HEADER_AUTHORIZATION, PREFIX_TOKEN_BEARER + jwt);
+        response.addHeader(HEADER_AUTHORIZATION, jwt);
 
         Map<String, String> body = new HashMap<>();
         body.put("token", jwt);
@@ -94,5 +94,13 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response,
             AuthenticationException failed) throws IOException, ServletException {
+
+        Map<String, String> body = new HashMap<>();
+        body.put("message", "Authentication failure");
+        body.put("error", failed.getMessage());
+
+        response.getWriter().write(new ObjectMapper().writeValueAsString(body));
+        response.setContentType(CONTENT_TYPE_APP_JSON);
+        response.setStatus(401);
     }
 }

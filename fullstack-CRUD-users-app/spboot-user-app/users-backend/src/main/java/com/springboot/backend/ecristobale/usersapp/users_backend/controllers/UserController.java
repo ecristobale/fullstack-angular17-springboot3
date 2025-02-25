@@ -73,19 +73,11 @@ public class UserController {
             return validation(result);
         }
         
-        Optional<User> userOptional = userService.findById(userId);
-        if (userOptional.isPresent()){
-            User userDB = userOptional.orElseThrow();
-            userDB.setEmail(user.getEmail());
-            userDB.setId(user.getId());
-            userDB.setLastname(user.getLastname());
-            userDB.setName(user.getName());
-            userDB.setCreatedAt(user.getCreatedAt());
-            userDB.setUsername(user.getUsername());
-            userDB.setPassword(user.getPassword());
-            return ResponseEntity.ok(userService.save(userDB));
+        Optional<User> userOptional = userService.update(user, userId);
+        if (!userOptional.isPresent()){
+            return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(userOptional.orElseThrow());
     }
 
     @DeleteMapping("/{userId}")

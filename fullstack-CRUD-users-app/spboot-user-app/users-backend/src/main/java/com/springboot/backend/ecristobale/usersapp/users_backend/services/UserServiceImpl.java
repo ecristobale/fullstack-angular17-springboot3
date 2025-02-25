@@ -3,9 +3,12 @@ package com.springboot.backend.ecristobale.usersapp.users_backend.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,8 +20,11 @@ public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    private PasswordEncoder passwordEncoder;
+
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -39,14 +45,32 @@ public class UserServiceImpl implements UserService {
         return this.userRepository.findById(userId);
     }
 
-    @Override
     @Transactional
+    @Override
     public User save(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return this.userRepository.save(user);
     }
 
-    @Override
     @Transactional
+    @Override
+    public Optional<User> update(User user, Long userId) {
+        Optional<User> userOptional = userRepository.findById(userId);
+        if (!userOptional.isPresent()){
+            return Optional.empty();
+        }
+        User userDB = userOptional.orElseThrow();
+        userDB.setEmail(user.getEmail());
+        userDB.setId(user.getId());
+        userDB.setLastname(user.getLastname());
+        userDB.setName(user.getName());
+        userDB.setCreatedAt(user.getCreatedAt());
+        userDB.setUsername(user.getUsername());
+        return Optional.of(userRepository.save(userDB));
+    }
+
+    @Transactional
+    @Override
     public void deleteById(@NonNull Long userId) {
         this.userRepository.deleteById(userId);
     }

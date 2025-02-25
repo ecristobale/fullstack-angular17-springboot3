@@ -19,5 +19,7 @@ public interface UserService {
 
     User save(User user);
 
+    Optional<User> update(User user, Long userId);
+
     void deleteById(@NonNull Long userId);
 }
