@@ -80,8 +80,9 @@ public class UserController {
             userDB.setId(user.getId());
             userDB.setLastname(user.getLastname());
             userDB.setName(user.getName());
-            userDB.setPassword(user.getPassword());
+            userDB.setCreatedAt(user.getCreatedAt());
             userDB.setUsername(user.getUsername());
+            userDB.setPassword(user.getPassword());
             return ResponseEntity.ok(userService.save(userDB));
         }
         return ResponseEntity.notFound().build();
