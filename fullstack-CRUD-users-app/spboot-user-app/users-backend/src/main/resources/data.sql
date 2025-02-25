@@ -1,7 +1,12 @@
+INSERT INTO roles (name) 
+VALUES 
+('ROLE_USER'),
+('ROLE_ADMIN');
+
 INSERT INTO users (name, lastname, email, created_at, username, password) 
 VALUES 
 ('Eduardo', 'Cristóbal', 'ecristobale1@ecris4tobale.ecristobale', '2025-02-15 16:50:12.646', 'username', 'password'),
-('Jonh', 'Doe', 'ecristobale1@ecrist3obale.ecristobale', '2025-02-15 16:52:12.646', 'johnndoe', '54321678'),
+('Admin', 'JohnDoe', 'ecristobale1@ecrist3obale.ecristobale', '2025-02-15 16:52:12.646', 'admin', '123456'),
 ('Ecristobale', 'Doe', 'ecristobale@ecristobale.ecristobale', '2025-02-15 16:54:12.646', 'ecristobale', 'estoesunapwd'),
 ('Ecristobale1', 'Doe1', 'ecristobale1@ecristobale.ecristobale', '2025-02-16 16:50:42.646', 'ecristobale1', 'estoesunapwd'),
 ('Ecristobale2', 'Doe2', 'ecristobale2@ecristobale.ecristobale', '2025-02-16 16:55:32.646', 'ecristobale2', 'estoesunapwd'),
@@ -15,3 +20,9 @@ VALUES
 ('Ecristobale4', 'Doe10', 'ecristobale10@ecristobale.ecristobale', '2025-02-19 15:51:12.646', 'ecristobale10', 'estoesunapwd'),
 ('Ecristobale4', 'Doe11', 'ecristobale11@ecristobale.ecristobale', '2025-02-19 16:52:12.646', 'ecristobale11', 'estoesunapwd'),
 ('Ecristobale4', 'Doe12', 'ecristobale12@ecristobale.ecristobale', '2025-02-19 18:53:12.646', 'ecristobale12', 'estoesunapwd');
+
+INSERT INTO users_roles (user_id, role_id) 
+VALUES 
+(1, 1),
+(2, 1),
+(2, 2);
