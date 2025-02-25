@@ -25,7 +25,8 @@ Project that uses:
  * Services: from which they emit an event by using EventEmmiters and data could be passed by subscribing to these events.
  * HttpClient: for connecting to api, expecting an observable Object.
  * Pagination: with a subcomponent and by using [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/) version 5.3 and Angular Routes to transfer page, totalPages and some metainfo retrieved from backend api.
- * Customized Alert messages with SweetAlert2 library. 
+ * Working with dates (Timestamp) using Angular Material with DatePicker.
+ * Customized Alert messages with SweetAlert2 library.
  * Html class styles with [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/) version 5.3.
  * Used new @If and @else instead of angular directives ngIf and ngFor
 

@@ -30,7 +30,13 @@ export class UserComponent implements OnInit {
       }
 
   ngOnInit(): void {
-    this.service.findAll().subscribe(users => this.users = users);
+    // this.service.findAll().subscribe(users => this.users = users);
+    const page = 0;
+    this.service.findAllPageable(page).subscribe( pageable => {
+      this.users = pageable.content as User[];
+      this.paginator = pageable;
+      this.sharingData.pageUsersEventEmitter.emit({users: this.users, paginator: this.paginator});
+    });
     this.route.paramMap.subscribe(params => {
       const page = +(params.get('page') || 0);
       this.service.findAllPageable(page).subscribe( pageable => {
