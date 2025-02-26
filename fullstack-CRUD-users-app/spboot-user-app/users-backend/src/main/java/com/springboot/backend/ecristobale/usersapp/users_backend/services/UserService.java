@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.lang.NonNull;
 
 import com.springboot.backend.ecristobale.usersapp.users_backend.entities.User;
+import com.springboot.backend.ecristobale.usersapp.users_backend.models.UserRequest;
 
 public interface UserService {
 
@@ -19,7 +20,7 @@ public interface UserService {
 
     User save(User user);
 
-    Optional<User> update(User user, Long userId);
+    Optional<User> update(UserRequest user, Long userId);
 
     void deleteById(@NonNull Long userId);
 }

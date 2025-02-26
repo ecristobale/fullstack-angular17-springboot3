@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.backend.ecristobale.usersapp.users_backend.entities.User;
+import com.springboot.backend.ecristobale.usersapp.users_backend.models.UserRequest;
 import com.springboot.backend.ecristobale.usersapp.users_backend.services.UserService;
 
 import jakarta.validation.Valid;
@@ -67,7 +68,7 @@ public class UserController {
     }
 
     @PutMapping("/{userId}")
-    public ResponseEntity<?> update(@Valid @RequestBody User user, BindingResult result, @PathVariable Long userId) {
+    public ResponseEntity<?> update(@Valid @RequestBody UserRequest user, BindingResult result, @PathVariable Long userId) {
         
         if ( result.hasErrors() ) {
             return validation(result);

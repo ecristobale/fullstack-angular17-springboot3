@@ -58,7 +58,7 @@ public class User {
     private String username;
 
     @NotBlank
-    @Size(min = 6, max = 30)
+    @Size(min = 6, max = 60)
     private String password;
 
     @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})

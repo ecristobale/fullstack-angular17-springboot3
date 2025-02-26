@@ -3,16 +3,15 @@ package com.springboot.backend.ecristobale.usersapp.users_backend.services;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.springboot.backend.ecristobale.usersapp.users_backend.entities.User;
+import com.springboot.backend.ecristobale.usersapp.users_backend.models.UserRequest;
 import com.springboot.backend.ecristobale.usersapp.users_backend.repositories.UserRepository;
 
 @Service
@@ -54,14 +53,13 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public Optional<User> update(User user, Long userId) {
+    public Optional<User> update(UserRequest user, Long userId) {
         Optional<User> userOptional = userRepository.findById(userId);
         if (!userOptional.isPresent()){
             return Optional.empty();
         }
         User userDB = userOptional.orElseThrow();
         userDB.setEmail(user.getEmail());
-        userDB.setId(user.getId());
         userDB.setLastname(user.getLastname());
         userDB.setName(user.getName());
         userDB.setCreatedAt(user.getCreatedAt());

@@ -7,7 +7,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 
 import com.springboot.backend.ecristobale.usersapp.users_backend.entities.User;
-import java.util.List;
 
 
 public interface UserRepository extends CrudRepository<User, Long> {
