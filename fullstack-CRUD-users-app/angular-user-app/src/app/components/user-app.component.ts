@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user';
 import { UserService } from '../services/user.service';
 import Swal from 'sweetalert2';
-import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SharingDataService } from '../services/sharing-data.service';
 import { FooterComponent } from './footer/footer.component';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'user-app',
@@ -22,7 +23,7 @@ export class UserAppComponent implements OnInit {
     private router: Router,
     private service: UserService,
     private sharingData: SharingDataService,
-    private route: ActivatedRoute
+    private authService: AuthService,
   ) {
   }
 
@@ -32,6 +33,29 @@ export class UserAppComponent implements OnInit {
     this.deleteUser();
     this.findUserById();
     this.pageUsersEvent();
+    this.handlerLogin();
+  }
+
+  handlerLogin() {
+    this.sharingData.handlerLoginEventEmitter.subscribe(({username, password}) => {
+      console.log(username + '  ' + password);
+
+      this.authService.loginUser({username, password}).subscribe({
+        next: response => {
+          const token = response.token;
+          console.log(token);
+          const payload = JSON.parse(atob(token.split(".")[1]));
+          console.log(payload);
+        }, 
+        error: error => {
+          if (error.status == 401) {
+            Swal.fire('Login error', error.error.message, 'error');
+          } else {
+            throw error;
+          }
+        }
+      });
+    });
   }
 
   pageUsersEvent() {

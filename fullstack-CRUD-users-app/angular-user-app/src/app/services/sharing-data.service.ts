@@ -22,7 +22,7 @@ export class SharingDataService {
 
   constructor() { }
 
-  get handlerLoginEventEmitter(): EventEmitter<User> {
+  get handlerLoginEventEmitter() {
     return this._handlerLoginEventEmitter;
   }
 
