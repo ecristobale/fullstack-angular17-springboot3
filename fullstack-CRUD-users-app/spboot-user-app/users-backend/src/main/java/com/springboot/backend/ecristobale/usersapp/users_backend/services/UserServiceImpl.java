@@ -1,5 +1,6 @@
 package com.springboot.backend.ecristobale.usersapp.users_backend.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,19 +11,25 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.springboot.backend.ecristobale.usersapp.users_backend.entities.Role;
 import com.springboot.backend.ecristobale.usersapp.users_backend.entities.User;
+import com.springboot.backend.ecristobale.usersapp.users_backend.models.IUser;
 import com.springboot.backend.ecristobale.usersapp.users_backend.models.UserRequest;
+import com.springboot.backend.ecristobale.usersapp.users_backend.repositories.RoleRepository;
 import com.springboot.backend.ecristobale.usersapp.users_backend.repositories.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
+    private RoleRepository roleRepository;
 
     private PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository,
+                            PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -47,6 +54,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public User save(User user) {
+        user.setRoles(getUserRoles(user));
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return this.userRepository.save(user);
     }
@@ -64,6 +72,9 @@ public class UserServiceImpl implements UserService {
         userDB.setName(user.getName());
         userDB.setCreatedAt(user.getCreatedAt());
         userDB.setUsername(user.getUsername());
+
+        userDB.setRoles(getUserRoles(user));
+
         return Optional.of(userRepository.save(userDB));
     }
 
@@ -71,6 +82,18 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteById(@NonNull Long userId) {
         this.userRepository.deleteById(userId);
+    }
+
+    private List<Role> getUserRoles(IUser user) {
+        List<Role> roles = new ArrayList<>();
+        Optional<Role> optionalRoleUser = roleRepository.findByName("ROLE_USER");
+        optionalRoleUser.ifPresent(roles::add); // same as: ifPresent(role -> roles.add(role));
+
+        if (user.isAdmin()) {
+            Optional<Role> optionalRoleAdmin = roleRepository.findByName("ROLE_ADMIN");
+            optionalRoleAdmin.ifPresent(roles::add);
+        }
+        return roles;
     }
 
 }
