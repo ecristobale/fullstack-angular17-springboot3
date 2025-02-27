@@ -46,7 +46,7 @@ export class AuthService {
     if (this._token != undefined) {
       return this._token;
     } else if (sessionStorage.getItem('token') != null ) {
-      this._token = JSON.parse(sessionStorage.getItem('token') || '');
+      this._token = sessionStorage.getItem('token') || '';
     }
     return this._token;
   }

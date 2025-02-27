@@ -3,6 +3,7 @@ VALUES
 ('ROLE_USER'),
 ('ROLE_ADMIN');
 
+-- 12345
 INSERT INTO users (name, lastname, email, created_at, username, password) 
 VALUES 
 ('Eduardo', 'Cristóbal', 'ecristobale1@ecris4tobale.ecristobale', '2025-02-15 16:50:12.646', 'username', '$2a$10$DOMDxjYyfZ/e7RcBfUpzqeaCs8pLgcizuiQWXPkU35nOhZlFcE9MS'),
