@@ -25,10 +25,15 @@ export class AuthService {
 
   set user(user: any) {
     this._user = user;
-    sessionStorage.setItem('login', JSON.stringify(login));
+    sessionStorage.setItem('login', JSON.stringify(user));
   }
 
   get user() {
+    if (this._user.isAuth) {
+      return this._user;
+    } else if (sessionStorage.getItem('login') != null ) {
+      this._user = JSON.parse(sessionStorage.getItem('login') || '{}');
+    }
     return this._user;
   }
 
@@ -38,6 +43,26 @@ export class AuthService {
   }
 
   get token() {
+    if (this._token != undefined) {
+      return this._token;
+    } else if (sessionStorage.getItem('token') != null ) {
+      this._token = JSON.parse(sessionStorage.getItem('token') || '');
+    }
     return this._token;
+  }
+
+  getPayload(token: string) {
+    if (token != null) {
+      return JSON.parse(atob(token.split(".")[1]));
+    }
+    return null;
+  }
+
+  isAdmin() {
+    return this.user.isAdmin;
+  }
+
+  authenticated() {
+    return this.user.isAuth;
   }
 }

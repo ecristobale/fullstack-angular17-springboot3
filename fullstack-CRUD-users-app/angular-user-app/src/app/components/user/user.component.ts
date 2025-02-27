@@ -5,6 +5,7 @@ import { UserService } from '../../services/user.service';
 import { SharingDataService } from '../../services/sharing-data.service';
 import { PaginatorComponent } from '../paginator/paginator.component';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'user',
@@ -22,6 +23,7 @@ export class UserComponent implements OnInit {
   constructor(
       private sharingData: SharingDataService,
       private service: UserService,
+      private authService: AuthService,
       private router: Router,
       private route: ActivatedRoute) {
         if (this.router.getCurrentNavigation()?.extras.state) {
@@ -57,5 +59,9 @@ export class UserComponent implements OnInit {
 
   onSelectedUser(user: User): void {
     this.router.navigate(['/users/edit', user.id]);
+  }
+
+  get admin() {
+    return this.authService.isAdmin();
   }
 }

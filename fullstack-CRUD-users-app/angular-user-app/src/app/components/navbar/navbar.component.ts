@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'navbar',
@@ -9,5 +10,15 @@ import { RouterModule } from '@angular/router';
 })
 export class NavbarComponent {
 
+  constructor(private authService: AuthService) {}
+
   @Input() paginator = {};
+
+  get login() {
+    return this.authService.user;
+  }
+
+  get admin() {
+    return this.authService.isAdmin();
+  }
 }
