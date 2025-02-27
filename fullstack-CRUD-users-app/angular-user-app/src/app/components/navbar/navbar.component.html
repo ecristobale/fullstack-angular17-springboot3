@@ -20,6 +20,8 @@
       <span class="nav-item nav-link text-primary mx-3">
         @if (login.isAuth) {
           {{login.user.username}}
+          <button (click)="handlerLogout()"
+          class="btn btn-outline-success">Logout</button>
         } @else {
           <a class="btn btn-outline-light"
             [routerLink]="['/login']">Sign In</a>
