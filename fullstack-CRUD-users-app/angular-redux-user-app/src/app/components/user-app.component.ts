@@ -18,8 +18,6 @@ import { add, find, findAll, remove, setPaginator, update } from '../store/users
 })
 export class UserAppComponent implements OnInit {
 
-  users: User[] = [];
-  paginator: any = {};
   user!: User;
 
   constructor(
@@ -30,8 +28,6 @@ export class UserAppComponent implements OnInit {
     private authService: AuthService,
   ) {
     this.store.select('users').subscribe(state => {
-      this.users = state.users;
-      this.paginator = state.paginator;
       this.user = {... state.user};
     })
   }
@@ -97,9 +93,7 @@ export class UserAppComponent implements OnInit {
           {
             next: (userUpdated) => {
               this.store.dispatch(update({userUpdated}));
-              this.router.navigate(['/users'], {
-                state: {paginator: this.paginator}
-              });
+              this.router.navigate(['/users']);
 
               Swal.fire({
                 title: "Updated!",
@@ -119,9 +113,7 @@ export class UserAppComponent implements OnInit {
           {
             next: userCreated => {
               this.store.dispatch(add({ userNew: userCreated }));
-              this.router.navigate(['/users'], {
-                state: {paginator: this.paginator}
-              });
+              this.router.navigate(['/users']);
 
               Swal.fire({
                 title: "Created!",
@@ -159,9 +151,7 @@ export class UserAppComponent implements OnInit {
             this.store.dispatch(remove({ userId }));
             // refresh of /users
             this.router.navigate(['/users/create'], {skipLocationChange: true}).then(()=> {
-              this.router.navigate(['/users'], {
-                state: {paginator: this.paginator}
-              });
+              this.router.navigate(['/users']);
             });
           })
           Swal.fire({
