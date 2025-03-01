@@ -9,7 +9,7 @@
 ## DESCRIPTION
 The **goal** of this project is to provide a starter kit for a **fullstack** web application using latest versions: **Spring Boot 3** and **Angular 17+** . There are some subprojects:
  * Main project: users fullstack application
-	- a frontend via Angular 17.
+	- a frontend via Angular 19 (17+).
 	- a backend via Spring Boot 3.
  * Angular applications:
 	- a cart Angular 17 webapp with angular routes and redux.
@@ -27,42 +27,60 @@ Project that uses:
  * Components: passing data between components and subcomponents via @Output() and @Input() annotations.
  * Angular routes: passing data between components via angular routes: 
  ```<a [routerLink]="['/mypath']" [state]="{objectData1, objectData2}"```
- and retrieving this data from the destiny component with Router: ```this.router.getCurrentNavigation()?.extras.state!['objectData1']``` and also with ActivatedRoute for request params (path/:myId)
+ and retrieving this data from the destiny component with Router: ```this.router.getCurrentNavigation()?.extras.state!['objectData1']``` and also with ActivatedRoute for request params: ```path/:myId```.
  * Services: from which they emit an event by using EventEmmiters and data could be passed by subscribing to these events.
  * HttpClient: for connecting to api, expecting an observable Object.
  * Pagination: with a subcomponent and by using [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/) version 5.3 and Angular Routes to transfer page, totalPages and some metainfo retrieved from backend api.
  * Working with dates (Timestamp) using Angular Material with DatePicker.
+ * Angular guards for managing roles and access to views. 
+ * Angular interceptors for adding security token to api requests.
  * Customized Alert messages with SweetAlert2 library.
  * Html class styles with [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/) version 5.3.
- * Used new @If and @else instead of angular directives ngIf and ngFor
+ * Used new @If and @else instead of angular directives ngIf and ngFor.
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
 
 ### Backend: SPRING BOOT 3
 Spring boot starter.
 Project that uses:
- * Normal Spring Boot components: (Rest)Controller, Service, Repository, Entity mapped to DB tables and columns
- * Validations for entity with Hibernate
- * Pagination with Pageable object
- * H2 in memory DB: with schema.sql and data.sql for configuration
- * Api links and OK and error responses tested with Postman (collection added to the project)
+ * Normal Spring Boot components: (Rest)Controller, Service, Repository, Entity mapped to DB tables and columns.
+ * Validations for entity with Hibernate.
+ * Pagination with Pageable object.
+ * Spring Security JWT (JSON Web Token)
+ * H2 in memory DB: with schema.sql and data.sql for configuration.
+ * Api links and OK and error responses tested with Postman (collection added to the project).
  
 ### Screenshots:
 
 Users view:
 ![Alt text](readme-screenshots/fullstack-users-01.PNG?raw=true "Users view Angular 19")
 
-Form create user:
+Login:
+![Alt text](readme-screenshots/fullstack-users-00.PNG?raw=true "Login view Angular 19")
+
+Login Error (Authentication failure):
+![Alt text](readme-screenshots/fullstack-users-00-alert.PNG?raw=true "Login Error Authentication failure view Angular 19")
+
+Users view - ROLE_ADMIN:
+![Alt text](readme-screenshots/fullstack-users-01-admin.PNG?raw=true "Users view ROLE_ADMIN Angular 19")
+
+Users view - ROLE_USER:
+![Alt text](readme-screenshots/fullstack-users-01-user.PNG?raw=true "Users view ROLE_USER Angular 19")
+
+Forbidden 403 Denied source access - ROLE_USER:
+![Alt text](readme-screenshots/fullstack-users-10-user.PNG?raw=true "Forbidden 403 Denied source access - ROLE_USER Angular 19")
+
+Create user form:
 ![Alt text](readme-screenshots/fullstack-users-02.PNG?raw=true "Form create user Angular 19")
 
-Alert user created:
-![Alt text](readme-screenshots/fullstack-users-03.PNG?raw=true "Alert user created Angular 19")
+User created alert:
+![Alt text](readme-screenshots/fullstack-users-03.PNG?raw=true "User created alert Angular 19")
 
 Form update user:
 ![Alt text](readme-screenshots/fullstack-users-04.PNG?raw=true "Form update user Angular 19")
 
-Alert remove user:
-![Alt text](readme-screenshots/fullstack-users-05.PNG?raw=true "Alert remove user Angular 19")
+Remove user confirm alert:
+![Alt text](readme-screenshots/fullstack-users-05.PNG?raw=true "Remove user confirm alert Angular 19")
 
 Angular 19 Code 1:
 ![Alt text](readme-screenshots/fullstack-users-06.PNG?raw=true "Code 1 Angular 19")
