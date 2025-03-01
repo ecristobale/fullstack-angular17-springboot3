@@ -9,5 +9,6 @@ export const findAllPageable = createAction('findAllPageable', props<{ users: Us
 export const find = createAction('find', props<{userId: number}>());
 
 export const add = createAction('add', props<{ userNew: User }>());
+export const addSuccess = createAction('addSuccess', props<{ userNew: User }>());
 export const update = createAction('update', props<{ userUpdated: User }>());
 export const remove = createAction('remove', props<{ userId: number }>());
