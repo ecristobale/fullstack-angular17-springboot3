@@ -6,6 +6,8 @@ import { SharingDataService } from '../../services/sharing-data.service';
 import { PaginatorComponent } from '../paginator/paginator.component';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
+import { Store } from '@ngrx/store';
+import { load } from '../../store/users.actions';
 
 @Component({
   selector: 'user',
@@ -21,40 +23,30 @@ export class UserComponent implements OnInit {
   paginator: any = {};
 
   constructor(
+      private store: Store<{users: any}>,
       private sharingData: SharingDataService,
       private service: UserService,
       private authService: AuthService,
       private router: Router,
       private route: ActivatedRoute) {
-        if (this.router.getCurrentNavigation()?.extras.state) {
-          this.paginator = this.router.getCurrentNavigation()?.extras.state!['paginator'];
-        }
+
+        this.store.select('users').subscribe(state => {
+          this.users = state.users;
+          this.paginator = state.paginator;
+        });
       }
 
   ngOnInit(): void {
-    // this.service.findAll().subscribe(users => this.users = users);
     const page = 0;
-    this.service.findAllPageable(page).subscribe( pageable => {
-      this.users = pageable.content as User[];
-      this.paginator = pageable;
-      this.sharingData.pageUsersEventEmitter.emit({users: this.users, paginator: this.paginator});
-    });
+    this.store.dispatch(load({ page }));
     this.route.paramMap.subscribe(params => {
       const page = +(params.get('page') || 0);
-      this.service.findAllPageable(page).subscribe( pageable => {
-        this.users = pageable.content as User[];
-        this.paginator = pageable;
-        this.sharingData.pageUsersEventEmitter.emit({users: this.users, paginator: this.paginator});
-        }
-      );
+      this.store.dispatch(load({ page }));
     });
   }
 
   onRemoveUser(userId: number): void {
-    // const confirmRemove = confirm('Are you sure? User will be removed permanently.');
-    // if (confirmRemove) {
       this.sharingData.idUserEventEmitter.emit(userId);
-    // }
   }
 
   onSelectedUser(user: User): void {
