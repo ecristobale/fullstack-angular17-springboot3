@@ -8,6 +8,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { Store } from '@ngrx/store';
+import { add } from '../../store/users.actions';
 
 @Component({
   selector: 'user-form',
@@ -19,15 +21,22 @@ export class UserFormComponent implements OnInit {
   user: User;
   errors: any = {};
 
-  constructor(private route: ActivatedRoute,
-              private service: UserService,
-              private sharingData: SharingDataService) {
+  constructor(
+    private store: Store<{users: any}>,
+    private route: ActivatedRoute,
+    private service: UserService,
+    private sharingData: SharingDataService) {
     this.user = new User();
+
+    this.store.select('users').subscribe(state => {
+      this.errors = state.errors;
+      this.user = { ... state.user };
+    });
   }
 
   ngOnInit(): void {
     // this.sharingData.selectUserEventEmitter.subscribe(user => this.user = user);
-    this.sharingData.errorsUserFormEventEmitter.subscribe(errors => this.errors = errors);
+    // this.sharingData.errorsUserFormEventEmitter.subscribe(errors => this.errors = errors);
 
     this.route.paramMap.subscribe(params => {
       const userId: number = +(params.get('userId') || '0');
@@ -40,12 +49,7 @@ export class UserFormComponent implements OnInit {
   }
 
   onSubmit(userForm: NgForm): void {
-    if(userForm.valid) {
-      this.sharingData.newUserEventEmitter.emit(this.user);
-      console.log(this.user);
-    }
-    userForm.reset();
-    userForm.resetForm();
+    this.store.dispatch(add({ userNew: this.user }));
   }
 
   onClear(userForm: NgForm): void {

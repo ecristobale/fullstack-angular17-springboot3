@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UserService } from '../../services/user.service';
@@ -37,11 +37,8 @@ export class UserComponent implements OnInit {
       }
 
   ngOnInit(): void {
-    const page = 0;
-    this.store.dispatch(load({ page }));
     this.route.paramMap.subscribe(params => {
-      const page = +(params.get('page') || 0);
-      this.store.dispatch(load({ page }));
+      this.store.dispatch(load({ page: +(params.get('page') || 0) }));
     });
   }
 
