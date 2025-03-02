@@ -31,7 +31,7 @@ export class UserAppComponent implements OnInit {
       this.authService.loginUser({username, password}).subscribe({
         next: response => {
           const token = response.token;
-          console.log(token);
+          // console.log(token);
           const payload = this.authService.getPayload(token);
 
           const user = { username: payload.sub };
