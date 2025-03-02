@@ -22,5 +22,5 @@ public interface UserService {
 
     Optional<User> update(UserRequest user, Long userId);
 
-    Long deleteById(@NonNull Long userId);
+    void deleteById(@NonNull Long userId);
 }

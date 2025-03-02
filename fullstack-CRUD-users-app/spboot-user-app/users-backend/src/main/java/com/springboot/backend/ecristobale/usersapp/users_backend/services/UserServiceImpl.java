@@ -80,9 +80,8 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public Long deleteById(@NonNull Long userId) {
+    public void deleteById(@NonNull Long userId) {
         this.userRepository.deleteById(userId);
-        return userId;
     }
 
     private List<Role> getUserRoles(IUser user) {
