@@ -7,7 +7,8 @@ import { PaginatorComponent } from '../paginator/paginator.component';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { Store } from '@ngrx/store';
-import { load } from '../../store/users.actions';
+import { load, remove } from '../../store/users.actions';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'user',
@@ -43,7 +44,19 @@ export class UserComponent implements OnInit {
   }
 
   onRemoveUser(userId: number): void {
-      this.sharingData.idUserEventEmitter.emit(userId);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "User will be removed from the system!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.store.dispatch(remove({ userId }));
+      }
+    });
   }
 
   onSelectedUser(user: User): void {
