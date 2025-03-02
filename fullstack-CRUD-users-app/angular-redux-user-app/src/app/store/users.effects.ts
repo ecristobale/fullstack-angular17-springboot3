@@ -25,7 +25,7 @@ export class UsersEffects {
 
                 return findAllPageable({users, paginator})
             }),
-            catchError(() => EMPTY)
+            catchError((error) => of(error))
         ))
         )
     );
@@ -36,7 +36,7 @@ export class UsersEffects {
             exhaustMap(action => this.service.create(action.userNew)
                 .pipe(
                     map(userNew => addSuccess({userNew})),
-                    catchError( error => (error.status === 400)? of(setErrors({errors: error.error})) : EMPTY
+                    catchError( error => (error.status === 400)? of(setErrors({userForm: action.userNew, errors: error.error})) : of(error)
                     )
                 ) 
             )
@@ -49,7 +49,7 @@ export class UsersEffects {
             exhaustMap(action => this.service.update(action.userUpdated)
                 .pipe(
                     map(userUpdated => updateSuccess({userUpdated})),
-                    catchError( error => (error.status === 400)? of(setErrors({errors: error.error})) : EMPTY
+                    catchError( error => (error.status === 400)? of(setErrors({userForm: action.userUpdated, errors: error.error})) : of(error)
                     )
                 ) 
             )
@@ -87,10 +87,8 @@ export class UsersEffects {
             ofType(remove),
             exhaustMap(action => this.service.delete(action.userId)
                 .pipe(
-                    map(userId => removeSuccess({userId})),
-                    catchError( error => (error.status === 400)? of(setErrors({errors: error.error})) : EMPTY
-                    )
-                ) 
+                    map(() => removeSuccess({userId: action.userId}))
+                )
             )
         )
     );

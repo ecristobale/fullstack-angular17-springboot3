@@ -7,7 +7,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Store } from '@ngrx/store';
-import { add, find, resetUser, setUserForm, update } from '../../store/users.actions';
+import { add, find, resetUser, update } from '../../store/users.actions';
 
 @Component({
   selector: 'user-form',
@@ -32,6 +32,7 @@ export class UserFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(resetUser());
+    
     this.route.paramMap.subscribe(params => {
       const userId: number = +(params.get('userId') || '0');
 
@@ -42,8 +43,6 @@ export class UserFormComponent implements OnInit {
   }
 
   onSubmit(userForm: NgForm): void {
-
-    this.store.dispatch(setUserForm({ user: this.user}));
     if (this.user.id > 0) { // update
       this.store.dispatch(update({ userUpdated: this.user }));
     } else { // create
