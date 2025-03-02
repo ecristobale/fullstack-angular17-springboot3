@@ -9,8 +9,9 @@
 ## DESCRIPTION
 The **goal** of this project is to provide a starter kit for a **fullstack** web application using latest versions: **Spring Boot 3** and **Angular 17+** . There are some subprojects:
  * Main project: users fullstack application
-	- a frontend via Angular 19 (17+).
-	- a backend via Spring Boot 3.
+	- a [frontend](https://github.com/ecristobale/fullstack-angular17-springboot3/tree/master/fullstack-CRUD-users-app/angular-user-app) via Angular 19 (17+).
+	- a [frontend](https://github.com/ecristobale/fullstack-angular17-springboot3/tree/master/fullstack-CRUD-users-app/angular-redux-user-app) via Angular 19 (17+) (with redux: store, actions, effects)
+	- a [backend](https://github.com/ecristobale/fullstack-angular17-springboot3/tree/master/fullstack-CRUD-users-app/spboot-user-app/users-backend) via Spring Boot 3.
  * Angular applications:
 	- a cart Angular 17 webapp with angular routes and redux.
 	- a redux (NgRx) Angular 17 basic app.
@@ -19,9 +20,9 @@ The **goal** of this project is to provide a starter kit for a **fullstack** web
 	- an invoice Angular 17 webapp. Actions such as adding and deleting elements. 
 	- a tutorial Angular 17 webapp with the basics elements: angular-tutorial.
 
-## USERS FULLSTACK APPLICATION (SPRING BOOT 3, ANGULAR 19)
+## USERS [FULLSTACK](https://github.com/ecristobale/fullstack-angular17-springboot3/tree/master/fullstack-CRUD-users-app) APPLICATION (SPRING BOOT 3, ANGULAR 19)
 
-### Frontend: ANGULAR 19 (17+)
+### Frontend: [ANGULAR 19 (17+)](https://github.com/ecristobale/fullstack-angular17-springboot3/tree/master/fullstack-CRUD-users-app/angular-user-app) - Frontend: [ANGULAR 19 (17+) (WITH REDUX)](https://github.com/ecristobale/fullstack-angular17-springboot3/tree/master/fullstack-CRUD-users-app/angular-redux-user-app)
 Project generated with [Angular CLI](https://github.com/angular/angular-cli) version 19.1.8.
 Project that uses:
  * Components: passing data between components and subcomponents via @Output() and @Input() annotations.
@@ -37,6 +38,7 @@ Project that uses:
  * Customized Alert messages with SweetAlert2 library.
  * Html class styles with [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/) version 5.3.
  * Used new @If and @else instead of angular directives ngIf and ngFor.
+ * Used redux (ngrx) store for managing actions that implies changes on the app state. Used redux store actions, reducer and effects. Implemented on this [angular project](https://github.com/ecristobale/fullstack-angular17-springboot3/tree/master/fullstack-CRUD-users-app/angular-redux-user-app)
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
 
@@ -86,7 +88,10 @@ Angular 19 Code 1:
 ![Alt text](readme-screenshots/fullstack-users-06.PNG?raw=true "Code 1 Angular 19")
 
 Angular 19 Code 2:
-![Alt text](readme-screenshots/fullstack-users-07.PNG?raw=true "Code 1 Angular 19")
+![Alt text](readme-screenshots/fullstack-users-07.PNG?raw=true "Code 2 Angular 19")
+
+Angular 19 Code 3 (redux):
+![Alt text](readme-screenshots/fullstack-users-11.PNG?raw=true "Code 3 Angular 19 (redux)")
 
 Spring Boot 3 Code:
 ![Alt text](readme-screenshots/fullstack-users-08.PNG?raw=true "Code 1 Spring Boot 3")
