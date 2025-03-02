@@ -12,13 +12,13 @@ The **goal** of this project is to provide a starter kit for a **fullstack** web
 	- a [frontend](https://github.com/ecristobale/fullstack-angular17-springboot3/tree/master/fullstack-CRUD-users-app/angular-user-app) via Angular 19 (17+).
 	- a [frontend](https://github.com/ecristobale/fullstack-angular17-springboot3/tree/master/fullstack-CRUD-users-app/angular-redux-user-app) via Angular 19 (17+) (with redux: store, actions, effects)
 	- a [backend](https://github.com/ecristobale/fullstack-angular17-springboot3/tree/master/fullstack-CRUD-users-app/spboot-user-app/users-backend) via Spring Boot 3.
- * Angular applications:
-	- a cart Angular 17 webapp with angular routes and redux.
-	- a redux (NgRx) Angular 17 basic app.
-	- a cart Angular 17 webapp with angular routes.
-	- a cart Angular 17 webapp (old version). With modal.
-	- an invoice Angular 17 webapp. Actions such as adding and deleting elements. 
-	- a tutorial Angular 17 webapp with the basics elements: angular-tutorial.
+ * Other [Angular applications](https://github.com/ecristobale/fullstack-angular17-springboot3/tree/master/other-angular-apps):
+	- a cart Angular 17 [webapp](https://github.com/ecristobale/fullstack-angular17-springboot3/tree/master/other-angular-apps/06-angular-cart/angular-cart-app) with angular routes and redux.
+	- a redux (NgRx) Angular 17 basic [webapp](https://github.com/ecristobale/fullstack-angular17-springboot3/tree/master/other-angular-apps/05-angular-ngrx/angular-counter-app).
+	- a cart Angular 17 [webapp](https://github.com/ecristobale/fullstack-angular17-springboot3/tree/master/other-angular-apps/04-angular-cart_routes/angular-cart-app) with angular routes.
+	- a cart Angular 17 [webapp](https://github.com/ecristobale/fullstack-angular17-springboot3/tree/master/other-angular-apps/03-angular-cart_old/angular-cart-app) (old version). With modal.
+	- an invoice Angular 17 [webapp](https://github.com/ecristobale/fullstack-angular17-springboot3/tree/master/other-angular-apps/02-angular-invoice/angular-invoice-app). Actions such as adding and deleting elements. 
+	- a tutorial Angular 17 [webapp](https://github.com/ecristobale/fullstack-angular17-springboot3/tree/master/other-angular-apps/01-angular-tutorial/angular-app) with the basics elements: angular-tutorial.
 
 ## USERS [FULLSTACK](https://github.com/ecristobale/fullstack-angular17-springboot3/tree/master/fullstack-CRUD-users-app) APPLICATION (SPRING BOOT 3, ANGULAR 19)
 
@@ -42,15 +42,15 @@ Project that uses:
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
 
-### Backend: SPRING BOOT 3
+### Backend: [SPRING BOOT 3](https://github.com/ecristobale/fullstack-angular17-springboot3/tree/master/fullstack-CRUD-users-app/spboot-user-app/users-backend)
 Spring boot starter.
 Project that uses:
  * Normal Spring Boot components: (Rest)Controller, Service, Repository, Entity mapped to DB tables and columns.
- * Validations for entity with Hibernate.
+ * Validations for entity with Hibernate Validations.
  * Pagination with Pageable object.
  * Spring Security JWT (JSON Web Token)
  * H2 in memory DB: with schema.sql and data.sql for configuration.
- * Api links and OK and error responses tested with Postman (collection added to the project).
+ * Api links and OK and error responses tested with Postman ([collection file added to the project](https://github.com/ecristobale/fullstack-angular17-springboot3/blob/master/fullstack-CRUD-users-app/testing-api-postman-http-requests/Users.postman_collection.json)).
  
 ### Screenshots:
 
@@ -102,14 +102,14 @@ Postman collection:
 
  
 
-## ANGULAR-CART (angular routes, NgRx)
+## [ANGULAR-CART](https://github.com/ecristobale/fullstack-angular17-springboot3/tree/master/other-angular-apps/06-angular-cart/angular-cart-app) (angular routes, NgRx)
 
 Project generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.12.
 Project that uses angular NgRx for managing app actions by using store and effects. Alert messages with SweetAlert2 library. Styles with [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/) version 5.3.
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
 
-## ANGULAR-NGRX (Redux)
+## [ANGULAR-NGRX](https://github.com/ecristobale/fullstack-angular17-springboot3/tree/master/other-angular-apps/05-angular-ngrx/angular-counter-app) (Redux)
 
 Project generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.12.
 Redux project that is configured to manage counter actions (increment, decrease, reset) by using store actions with props and reducer.
@@ -119,7 +119,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
 NgRx code:
 ![Alt text](readme-screenshots/angular-ngrx-01.PNG?raw=true "Cart_old Angular 17 Components")
 
-## ANGULAR-CART (angular routes)
+## [ANGULAR-CART](https://github.com/ecristobale/fullstack-angular17-springboot3/tree/master/other-angular-apps/04-angular-cart_routes/angular-cart-app) (angular routes)
 
 Project generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.12.
 Project that uses angular routes for using its basic components such as [routerLink], [state] for passing elements, <router-outlet> to display path elements. It is also created a service for emit and subscribe info for passing data across the components. It is also used sessionStorage for maintaining the elements in the Shopping Cart. Alert messages with SweetAlert2 library. Styles with [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/) version 5.3.
@@ -144,7 +144,7 @@ Shopping Cart component:
 Code about angular routes and subscribing to an event:
 ![Alt text](readme-screenshots/angular-cart-route-06.PNG?raw=true "Cart_old Angular 17 Shopping Cart hidden Div")
 
-## ANGULAR-CART (OLD)
+## [ANGULAR-CART](https://github.com/ecristobale/fullstack-angular17-springboot3/tree/master/other-angular-apps/03-angular-cart_old/angular-cart-app) (OLD)
 
 Project generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.12.
 The project is structured in one component that has some subcomponents, some of them has another subcomponents. It can be saw how the data is passed across the components in either directions. Actions such as adding and deleting elements filling a Shopping Cart that can be displayed as a hidden div or as a modal by clicking on the navbar. Values of Shopping Cart remains stored by saving them on sessionStorage. Styles with [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/) version 5.3.
@@ -163,7 +163,7 @@ Shopping Cart displayed in Modal:
 Shopping Cart hidden in Div:
 ![Alt text](readme-screenshots/angular-cart-old-03.PNG?raw=true "Cart_old Angular 17 Shopping Cart hidden Div")
 
-## ANGULAR-INVOICE
+## [ANGULAR-INVOICE](https://github.com/ecristobale/fullstack-angular17-springboot3/tree/master/other-angular-apps/02-angular-invoice/angular-invoice-app)
 
 Project generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.12.
 Contains one entity formed by some others, each one of this in one component. In this project it can be see how data is passed among the components. Actions such as adding and deleting elements of a dynamic list as well as form validation with customized messages. Styles with [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/) version 5.3.
@@ -172,7 +172,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
 
 ![Alt text](readme-screenshots/angular-invoice-01.PNG?raw=true "Invoice Angular 17")
 
-## ANGULAR-TUTORIAL
+## [ANGULAR-TUTORIAL](https://github.com/ecristobale/fullstack-angular17-springboot3/tree/master/other-angular-apps/01-angular-tutorial/angular-app)
 
 Small and simple project generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.12.
 Contains basic elements such as components, services, methods like OnInit and Constructor and actions such as passing data between parent component and his child. Alternative and new way with @for, @if and @else instead of *ngIf, ng-template and *ngFor. Styles with [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/) version 5.3.
@@ -180,9 +180,3 @@ Contains basic elements such as components, services, methods like OnInit and Co
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
 
 ![Alt text](readme-screenshots/angular-tutorial-01.PNG?raw=true "Angular 17 Tutorial")
-
-## ANGULAR
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.12, and components added manually with NPM.
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
